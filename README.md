@@ -9,3 +9,5 @@ Student Web Access is a multi-user web-service primarily designed for students t
 - Thursday from 12:15 to 1:15
 
 A virtual means of communication and meeting has been set up as well.
+
+### Any meeting minutes, deliverables, or other documents will be posted to the Wiki
