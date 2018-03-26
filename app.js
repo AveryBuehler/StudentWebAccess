@@ -16,11 +16,6 @@ let app = express();
 
 app.use(express.static('public'));
 
-app.post('/login', (req, res) => {
-	// TODO: Process login
-	res.send('debugtime');
-})
-
 // Routing, index.js doesn't need to be included in the require path because index.js is the default for a directory
 let login = require('./login.js'); // Likely use for processing login
 app.use('/login', login);
@@ -34,7 +29,6 @@ app.use('/admin', admin);
 
 let help = require('./routes/help');
 app.use('/help', help);
-
 
 /*
 // HTTPS things
