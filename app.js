@@ -1,6 +1,29 @@
-let express = require('express');
-let app = express();
+let express = require('express'), app = express();
+let passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 
+let knex = require('./dbconnection.js').connection(process.argv);
+
+// -------------- passport --------------
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    knex('users').where({username: username }).then(function(user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+// -------------- end passport --------------
+
+
+// -------------- express --------------
 // View engine things
 app.set('view engine', 'html'); // Set the view engine extension
 app.engine('html', require('hbs').__express); // Set the view engine itself
@@ -31,7 +54,11 @@ app.listen(8080, () => console.log("App listening on port 8080"));
 
 function verify(req, res, next) {
 	// TODO: Middleware to verify auth
+  console.log(req.user);
+  //console.log(req.user.authenticated);
 	next();
 }
 
-// TODO: Add passport.js, express-session
+// -------------- end express --------------
+
+// TODO: express-session
