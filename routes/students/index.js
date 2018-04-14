@@ -1,14 +1,14 @@
 // Student view
 
-let express = require('express');
+const express = require('express');
 let router = express.Router();
 
 router.route('/')
 	.get(function(req, res) {
-		res.send('TODO: [Folder name] route');
+		res.render('error', {error: 'GET not implemented'});
 	})
 	.post(function(req, res) {
-		res.send('TODO: Login success?')
+		res.send('error', {error: 'POST not implemented'});
 	});
 
 module.exports = router;

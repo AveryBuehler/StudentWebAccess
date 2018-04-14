@@ -1,25 +1,50 @@
-let express = require('express'), app = express();
-let passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
+const express = require('express'), 
+      app = express(),
+      passport = require('passport'), 
+      LocalStrategy = require('passport-local').Strategy,
+      session = require("express-session"),
+      bodyParser = require("body-parser"),
+      cookieParser = require("cookie-parser");
 
 let knex = require('./dbconnection.js').connection(process.argv);
+
+
+//app.use(cookieParser("doggos"));
+app.use(session({ secret: "doggos", saveUninitialized: true, resave: false, cookie: { maxAge: null } }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // -------------- passport --------------
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    knex('users').where({username: username }).then(function(user) {
-      if (err) { return done(err); }
+    knex('users.student').where({username: username }).first()
+      .then(function(user) {
+      //if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (!user.validPassword(password)) {
+      if (!(password === user.password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
     });
   }
 ));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.student_id);
+});
+
+passport.deserializeUser(function(id, done) {
+  knex('users.student')
+    .where({student_id: id}).first()
+    .then(function(user) {
+      done(null, user);
+  }).catch((err) => { 
+    done(err,null); 
+  });
+});
 // -------------- end passport --------------
 
 
@@ -39,7 +64,7 @@ app.use('/login', login);
 
 // Other views can follow the format of students/admin
 let students = require('./routes/students'); 
-app.use('/students', verify, students); // 
+app.use('/students', verify, students); 
 
 let admin = require('./routes/admin');
 app.use('/admin', verify, admin);
@@ -50,15 +75,23 @@ app.use('/help', help);
 // Public directory
 app.use(express.static('public'));
 
+// 404
+app.get('*', function(req, res, next) {
+  let err = new Error('Page Not Found');
+  err.statusCode = 404;
+  res.render('error', {error: err})
+});
+
 app.listen(8080, () => console.log("App listening on port 8080"));
 
 function verify(req, res, next) {
-	// TODO: Middleware to verify auth
-  console.log(req.user);
-  //console.log(req.user.authenticated);
-	next();
+  // TODO: Middleware to verify auth
+  console.log("User nav request from " + req.ip);
+  if(!req.user) { 
+    console.log("No user in request");
+    return res.redirect('/');
+  }
+  next();
 }
 
 // -------------- end express --------------
-
-// TODO: express-session

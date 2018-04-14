@@ -14,7 +14,9 @@
   "author": "Team Cube",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "connect-session-knex": "^1.4.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "hbs": "^4.0.1",

@@ -6,7 +6,7 @@ module.exports.connection = function (argv) {
       connection: {
         host : '137.49.38.134',
         user : 'web_anon',
-        password : '',
+        password : '1password1', // TODO: SECURE THIS IN PRODUCTION
         database : 'gargoyle'
       }
     }

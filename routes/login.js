@@ -1,15 +1,13 @@
-let express = require('express');
+const express = require('express');
 let router = express.Router();
-let passport = require('passport');
-
-/*router.use(function timeLog (req, res, next) { // Example of middleware functions
-  console.log('Time: ', Date.now())
-  next()
-})*/
+const passport = require('passport');
 
 router.route('/') // TODO: Likely use passport.js for redirects, this may not be needed
-	.post(passport.authenticate('local', {	successRedirect: '../students/',
-											failureRedirect: '/' })
+	.get(function(req, res){
+		res.redirect('/');
+	})
+	.post(passport.authenticate('local', {	successRedirect: '/students/',
+											failureRedirect: '/login'})
 );
 
 module.exports = router;
