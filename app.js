@@ -54,8 +54,7 @@ app.set('view engine', 'html'); // Set the view engine extension
 app.engine('html', require('hbs').__express); // Set the view engine itself
 
 app.get('/', (req, res) => {
-	let exampleObject = {title: "Gargoyle"};
-	res.render('index', exampleObject); // Rendering example
+	res.render('Login/index', {title: "Gargoyle"}); // Rendering example
 });
 
 // Routing, index.js doesn't need to be included in the require path because index.js is the default for a directory

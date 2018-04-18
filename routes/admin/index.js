@@ -5,7 +5,7 @@ let router = express.Router();
 
 router.route('/')
 	.get(function(req, res) {
-		res.send('TODO: [Folder name] route');
+		res.render('index', {});
 	});
 
 module.exports = router;
