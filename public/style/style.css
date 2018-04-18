@@ -17,6 +17,11 @@ body {
 #websitehelp{
 	font-size: 30px;
 }
+ul.infoDisplay {
+  list-style-type: none;
+  padding:0;
+  margin:0;
+}
 /* Container */
 .container {
 	position: inherit;
@@ -24,6 +29,15 @@ body {
 	margin-right: auto;
 	height: 1000px;
 	background-color: #FFFFFF;
+}
+div.infoDisplay {
+	text-align:left;
+	margin: 0 auto;
+	width: 50%;
+	font-size:20px;
+	background-color:#EEE;
+	padding:10px;
+	box-shadow: 0 3px 3px 0px hsla(0,0%,0%,.25);
 }
 /* Navigation */
 header {
@@ -238,6 +252,12 @@ nav ul li {
 	line-height: 22px;
 	text-align: center;
 }
+div.infoDisplay {
+	text-align:left;
+	margin: 0 auto;
+	width: 95%;
+	font-size:16px;
+}
 }
 
 /* Small Tablets */
@@ -345,6 +365,12 @@ nav ul li {
 .footer_column {
 	width: 100%;
 }
+div.infoDisplay {
+	text-align:left;
+	margin: 0 auto;
+	width: 95%;
+	font-size:18px;
+}
 }
 
 /* Small Desktops */
@@ -369,5 +395,11 @@ nav ul li {
 .banner {
 	margin-top: 0px;
 	padding-top: 0px;
+}
+div.infoDisplay {
+	text-align:left;
+	margin: 0 auto;
+	width: 75%;
+	font-size:20px;
 }
 }

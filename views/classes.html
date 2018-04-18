@@ -4,8 +4,19 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Self-Service</title>
+<title>Self-Service | Classes</title>
 <link href="/style/style.css" rel="stylesheet" type="text/css">
+<style>
+  ul.classes li div {
+    width: 150px; height: 160px;
+    background-color: #EEE; 
+    box-shadow: 0 3px 3px 0px hsla(0,0%,0%,.25);
+  }
+  ul.classes li {
+    display: inline-block;
+    margin: 0 5px 5px 0;
+  }
+</style>
 <script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
 </head>
 <body>
@@ -13,7 +24,7 @@
 <div class="container"> 
   <!-- Navigation -->
   <header> <a href="index.html">
-    <h4 class="logo">University of Hartford | Self-Service Center</h4>
+    <h4 class="logo">University of Hartford | Academic Information</h4>
     </a>
     <nav>
       <ul>
@@ -26,8 +37,21 @@
     </nav>
   </header>
   <!-- Hero Section -->
-<h3 class="mainsection">Welcome to the University's Self-Service Center.</h3>
-	<h4 class ="mainsection">Please select from one of the menu options above.</h4>
+<h1 class="mainsection">Classes</h1>
+<div class="mainsection">
+  <ul class="classes infoDisplay">
+    {{#each classes}}
+    <li><div>
+      <ul class="infoDisplay">
+      <li>CRN: {{this.crn}}</li>
+      <li>CLASS: {{this.class_code}}{{this.class_level}}</li>
+      <li>PROFESSOR: {{this.professor_name}}</li>
+      <li>CREDITS: {{this.credit_worth}}</li>
+      <li>LOCATION: {{this.class_location}}</li></ul>
+    </div></li>
+    {{/each}}
+  </ul>
+</div>
 <!-- Copyrights Section -->
   <div class="copyright">&copy;2018 -TEAM<sup>3</sup></sp></div>
 </div>
