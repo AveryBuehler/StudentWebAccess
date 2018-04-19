@@ -52,7 +52,10 @@ div.infoDisplay {
 /* Navigation */
 
 header {
-    width: 150;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100;
     height: 5%;
     background-color: #000000;
     border-bottom: 3px solid #000000;
