@@ -71,6 +71,12 @@ app.use('/admin', verify, admin);
 let help = require('./routes/help');
 app.use('/help', help);
 
+// Logout handler
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 // Public directory
 app.use(express.static('public'));
 
@@ -85,7 +91,7 @@ app.listen(8080, () => console.log("App listening on port 8080"));
 
 function verify(req, res, next) {
   // TODO: Middleware to verify auth
-  console.log("User nav request from " + req.ip);
+  console.log("User nav request from " + req.ip + " for " + req.url);
   if(!req.user) { 
     console.log("No user in request");
     return res.redirect('/');
