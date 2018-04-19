@@ -34,13 +34,14 @@
         <h1 class="mainsection">Personal Information</h1>
         <div class="mainsection infoDisplay">
             <ul class="infoDisplay">
-                <li>Student ID: {{student_id}}</li>
-                <li>Name: {{fname}} {{minit}} {{lname}}</li>
-                <li>Email: {{email}}</li>
-                <li>Address: {{address}}</li>
-                <li>Phone Number: {{phone_number}}</li>
-                <li>Date Of Birth: {{date_of_birth}}</li>
-                <li>SSN: {{ssn}}</li>
+                <li><label>Student ID: {{student_id}}</label></li>
+                <li><label>Name: <input type="text" name="fullname" value="{{fname}} {{minit}} {{lname}}"></label></li>
+                <li><label>Email: <input type="text" name="email" value="{{email}}"></label></li>
+                <li><label>Address: <input type="text" name="email" value="{{address}}"></label></li>
+                <li><label>Phone Number: <input type="text" name="email" value="{{phone_number}}"></label></li>
+                <li><label>Date Of Birth: <input type="date" name="email" value="{{date_of_birth}}"></label></li>
+                <li><label>SSN: <input type="text" name="email" value="{{ssn}}"></label></li>
+                <li><input type="button" name="submit" value="Submit Changes"></li>
             </ul>
         </div>
         <!-- Copyrights Section -->

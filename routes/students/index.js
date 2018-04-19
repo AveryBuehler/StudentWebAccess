@@ -12,6 +12,8 @@ router.route('/')
 
 router.route('/personal')
 	.get(function(req, res) {
+		req.user.date_of_birth = dateMMDDYYYY(req.user.date_of_birth);
+		console.log(dateMMDDYYYY(req.user.date_of_birth));
 		res.render('personal', req.user);
 	});
 
@@ -29,3 +31,17 @@ router.route('/classes')
 	});
 
 module.exports = router;
+
+function dateMMDDYYYY(d) {
+	if(typeof d === "string") 
+		d = new Date(d);
+	return d.getFullYear() + "-" + padAA(d.getMonth().toString(), 2, "0") + "-" + padAA(d.getDay().toString(), 2, "0");
+}
+
+function padAA(s, n, c) {
+	if(s.length < n) {
+		return c.repeat(n - s.length) + s;
+	} else {
+		return s;
+	}
+}
