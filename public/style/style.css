@@ -31,10 +31,8 @@ ul.infoDisplay {
 /* Container */
 
 .container {
-    position: inherit;
     margin-left: auto;
     margin-right: auto;
-    height: 1000px;
     background-color: #FFFFFF;
 }
 
