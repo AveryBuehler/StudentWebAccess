@@ -71,6 +71,12 @@ header {
     letter-spacing: 4px;
 }
 
+.logout {
+	/*text-align: right;*/
+	margin-top: 10px;
+	float: right;
+}
+
 nav {
     float: right;
     width: 50%;
