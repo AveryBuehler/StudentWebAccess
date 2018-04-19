@@ -5,6 +5,7 @@
 body {
     font-family: source-sans-pro;
     background-color: #f2f2f2;
+    text-align: center;
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
@@ -13,12 +14,14 @@ body {
     font-weight: 200;
 }
 
-.mainsection {
-    text-align: center;
+#websitehelp {
+    font-size: 45px;
 }
 
-#websitehelp {
-    font-size: 30px;
+.divider {
+    width: 5px;
+    height: auto;
+    display: inline-block;
 }
 
 ul.infoDisplay {
@@ -73,6 +76,7 @@ nav {
     width: 50%;
     text-align: right;
     margin-right: 25px;
+    letter-spacing: 4px;
 }
 
 header nav ul {
@@ -98,6 +102,7 @@ ul li a {
 
 ul li:hover a {
     color: #FCFFA1;
+    text-decoration: underline;
 }
 
 .hero_header {
