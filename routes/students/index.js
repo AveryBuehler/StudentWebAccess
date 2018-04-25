@@ -12,11 +12,33 @@ router.route('/')
 
 router.route('/personal')
 	.get(function(req, res) {
-		req.user.date_of_birth = dateMMDDYYYY(req.user.date_of_birth);
-		console.log(dateMMDDYYYY(req.user.date_of_birth));
+		req.user.date_of_birth = req.user.date_of_birth;
 		res.render('personal', req.user);
 	});
-
+	
+//router.get('/personal/update',
+//	function(req, res) {
+//		console.log('Got the personal update page, hahahaha');
+//		res.send("Updated info");
+//	});
+	
+router.post('/personal/update', function(req, res) {
+		knex('users.student')
+		.where('student_id','=',req.user.student_id)
+		.update({
+			fname: req.body.firstname,
+			minit: req.body.middleinit,
+			lname: req.body.lastname,
+			address: req.body.address,
+			email: req.body.email,
+			phone_number: req.body.phonenum,
+			thisKeyIsSkipped: undefined
+		}).finally( function () {
+			//knex.destroy()
+		})
+		res.redirect('/students/personal');
+	});
+	
 router.route('/academic')
 	.get(function(req, res) {
 		res.render('academic', req.user);

@@ -34,14 +34,18 @@
         <h1 class="mainsection">Personal Information</h1>
         <div class="mainsection infoDisplay">
             <ul class="infoDisplay">
-                <li><label>Student ID: {{student_id}}</label></li>
-                <li><label>Name: <input type="text" name="fullname" value="{{fname}} {{minit}} {{lname}}"></label></li>
-                <li><label>Email: <input type="text" name="email" value="{{email}}"></label></li>
-                <li><label>Address: <input type="text" name="email" value="{{address}}"></label></li>
-                <li><label>Phone Number: <input type="text" name="email" value="{{phone_number}}"></label></li>
-                <li><label>Date Of Birth: <input type="date" name="email" value="{{date_of_birth}}"></label></li>
-                <li><label>SSN: <input type="text" name="email" value="{{ssn}}"></label></li>
-                <li><input type="button" name="submit" value="Submit Changes"></li>
+                <form action="personal/update" method="post" accept-charset="utf-8">
+                    <li><label>Student ID: {{student_id}}</label></li>
+                    <li><label>First Name: <input type="text" name="firstname" value="{{fname}}"></label></li>
+					<li><label>Middle Initial: <input type="text" name="middleinit" value="{{minit}}" maxlength="1"></label></li>
+					<li><label>Last Name: <input type="text" name="lastname" value="{{lname}}"></label></li>
+                    <li><label>Email: <input type="text" name="email" value="{{email}}"></label></li>
+                    <li><label>Address: <input type="text" name="address" value="{{address}}"></label></li>
+                    <li><label>Phone Number: <input type="text" name="phonenum" value="{{phone_number}}"></label></li>
+                    <li><label>Date Of Birth: {{date_of_birth}}</label></li>
+                    <li><label>SSN: {{ssn}}</label></li>
+                    <li><input type="submit" name="submit" value="Submit Changes"></li>
+                </form>
             </ul>
         </div>
         <!-- Copyrights Section -->
