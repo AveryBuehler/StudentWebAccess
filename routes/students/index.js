@@ -58,8 +58,21 @@ router.route('/academic')
 
 router.route('/classes')
 	.get(function(req, res) {
-		knex.select().table('classes.classes').then(function(data) {
-			res.render('classes', {classes: data});
+		knex.select().table('classes.classes')
+		.then(function(class_data) {
+			knex.select()
+				.table('classes.class_registration')
+				.where({student_id: req.user.student_id})
+				.then(function(reg_data) {
+					class_data.forEach( function(ce, ci) {
+						reg_data.forEach( function(re, ri) {
+							if(ce.crn === re.crn) {
+								ce.student_id = re.student_id;
+							}
+						});
+					});
+					res.render('classes', {classes: class_data});
+				})
 		});
 		
 	});
