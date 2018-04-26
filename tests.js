@@ -1,0 +1,1 @@
+// Automating tests goes here, probably use mocha

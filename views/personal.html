@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Self-Service | Personal</title>
+    <link href="/style/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="https://i.imgur.com/UM2lYmB.png">
+    <script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Navigation -->
+        <header>
+            <a>
+                <h4 class="logo">University of Hartford | Personal Information</h4>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/students">HOME</a></li>
+                    <li><a href="/students/personal">PERSONAL</a></li>
+                    <li><a href="/students/academic">ACADEMIC</a></li>
+                    <li><a href="/students/classes">CLASSES</a></li>
+                    <li><a href="/help">HELP</a></li>
+					<li><a href="/logout">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Hero Section -->
+        <h1 class="mainsection">Personal Information</h1>
+        <div class="mainsection infoDisplay">
+            <ul class="infoDisplay">
+                <form action="personal/update" method="post" accept-charset="utf-8">
+                    <li><label>Student ID: {{student_id}}</label></li>
+                    <li><label>First Name: <input type="text" name="firstname" value="{{fname}}"></label></li>
+					<li><label>Middle Initial: <input type="text" name="middleinit" value="{{minit}}" maxlength="1"></label></li>
+					<li><label>Last Name: <input type="text" name="lastname" value="{{lname}}"></label></li>
+                    <li><label>Email: <input type="text" name="email" value="{{email}}"></label></li>
+                    <li><label>Address: <input type="text" name="address" value="{{address}}"></label></li>
+                    <li><label>Phone Number: <input type="text" name="phonenum" value="{{phone_number}}"></label></li>
+                    <li><label>Date Of Birth: {{date_of_birth}}</label></li>
+                    <li><label>SSN: {{ssn}}</label></li>
+                    <li><input type="submit" name="submit" value="Submit Changes"></li>
+                </form>
+            </ul>
+        </div>
+        <!-- Copyrights Section -->
+        <div class="copyright">&copy;2018 -TEAM<sup>3</sup></sp>
+        </div>
+    </div>
+    <!-- Main Container Ends -->
+</body>
+
+</html>

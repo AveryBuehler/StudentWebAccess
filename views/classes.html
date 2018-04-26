@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Self-Service | Classes</title>
+    <link rel="icon" href="https://i.imgur.com/UM2lYmB.png">
+    <link href="/style/style.css" rel="stylesheet" type="text/css">
+    <style>
+        #registered {
+            background-color: #2ecc71;
+            color: #646469;
+        }
+
+        ul.classes li button {
+            width: 150px;
+            height: auto;
+            background-color: #EEE;
+            box-shadow: 0 3px 3px 0px hsla(0, 0%, 0%, .25);
+        }
+        
+        ul.classes li {
+            display: inline-block;
+            margin: 0 5px 5px 0;
+        }
+
+    </style>
+    <script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
+    <<script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer></script>
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Navigation -->
+        <header>
+            <a>
+                <h4 class="logo">University of Hartford | Class Information</h4>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/students">HOME</a></li>
+                    <li><a href="/students/personal">PERSONAL</a></li>
+                    <li><a href="/students/academic">ACADEMIC</a></li>
+                    <li><a href="/students/classes">CLASSES</a></li>
+                    <li><a href="/help">HELP</a></li>
+					<li><a href="/logout">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Hero Section -->
+        <h1 class="mainsection">Classes</h1>
+        <div class="mainsection">
+            <ul class="classes infoDisplay">
+                {{#each classes}}
+                <li>
+                    <button {{#if this.student_id}} id="registered" disabled {{else}} onclick="register({{this.crn}})" {{/if}}>
+                        <ul class="infoDisplay">
+                            <li>CRN: {{this.crn}}</li>
+                            <li>CLASS: {{this.class_code}}{{this.class_level}}</li>
+                            <li>PROFESSOR: {{this.professor_name}}</li>
+                            <li>CREDITS: {{this.credit_worth}}</li>
+                            <li>LOCATION: {{this.class_location}}</li>
+                        </ul>
+                    </button>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <!-- Copyrights Section -->
+        <div class="copyright">&copy;2018 -TEAM<sup>3</sup></sp>
+        </div>
+    </div>
+    <!-- Main Container Ends -->
+</body>
+
+</html>

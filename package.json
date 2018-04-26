@@ -1,0 +1,30 @@
+{
+  "name": "gargoyle",
+  "version": "0.0.1",
+  "description": "This web app will be a redesigned student interface which will replace Banweb.",
+  "main": "app.js",
+  "scripts": {
+    "run": "app.js",
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.cs.hartford.edu/TeamCube/StudentWebAccess.git"
+  },
+  "author": "Team Cube",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-session-knex": "^1.4.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "hbs": "^4.0.1",
+    "knex": "^0.14.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.1",
+    "request": "^2.85.0",
+    "sqlite3": "^4.0.0"
+  }
+}
