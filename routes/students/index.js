@@ -35,8 +35,8 @@ router.post('/personal/update', function(req, res) {
 			thisKeyIsSkipped: undefined
 		}).finally( function () {
 			//knex.destroy()
+			res.redirect('/students/personal');
 		})
-		res.redirect('/students/personal');
 	});
 	
 router.route('/academic')
