@@ -24,7 +24,7 @@ router.route('/personal')
 	
 router.post('/personal/update', function(req, res) {
 		knex('users.student')
-		.where('student_id','=',req.user.student_id)
+		.where({student_id: req.user.student_id})
 		.update({
 			fname: req.body.firstname,
 			minit: req.body.middleinit,
@@ -41,8 +41,20 @@ router.post('/personal/update', function(req, res) {
 	
 router.route('/academic')
 	.get(function(req, res) {
-		res.render('academic', req.user);
-	});
+		knex('classes.class_registration')
+			.where({student_id: req.user.student_id})
+			.join('classes.classes' ,{'classes.class_registration.crn': 'classes.classes.crn'})
+			.join('classes.class_information', {'classes.class_registration.crn': 'classes.class_information.crn'})
+			.then(function(data) {
+				data.forEach( function(element, index) {
+					if(element.class_meeting_days == 'TBA') {
+						delete element.class_start_time;
+						delete element.class_end_time;
+					}
+				});
+				res.render('academic', {classes: data});
+			});
+});
 
 router.route('/classes')
 	.get(function(req, res) {
@@ -57,7 +69,8 @@ module.exports = router;
 function dateMMDDYYYY(d) {
 	if(typeof d === "string") 
 		d = new Date(d);
-	return d.getFullYear() + "-" + padAA(d.getMonth().toString(), 2, "0") + "-" + padAA(d.getDay().toString(), 2, "0");
+	console.log(d);
+	return d.getDay().toString() + "-" + d.getMonth().toString() + "-" + d.getFullYear();
 }
 
 function padAA(s, n, c) {
