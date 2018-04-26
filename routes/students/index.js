@@ -75,6 +75,17 @@ router.route('/classes')
 				})
 		});
 		
+	}).post(function(req, res) {
+		console.log(req.body.crn)
+		if(req.body.crn) {
+			knex('classes.class_registration')
+				.insert({student_id: req.user.student_id, crn: req.body.crn})
+				.finally( function () {
+					//knex.destroy()
+					console.log("success");
+					res.redirect('/students/classes');
+				});
+		}
 	});
 
 module.exports = router;
