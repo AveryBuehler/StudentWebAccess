@@ -1,4 +1,4 @@
-# Student Web Access [Actual Name TBD]
+# Student Web Access
 
 ### Project Members: Avery Buehler, James Pinckney, Jacob Pfeiffer
 
